@@ -78,8 +78,8 @@ public:
 	}
 
 	bool unsubscribe_from_topic(const std::string &topic) {
-		if (const auto &it = std::find(topics_.begin(), topics_.end(), topic);
-			it != topics_.end()) {
+	const auto &it = std::find(topics_.begin(), topics_.end(), topic);
+		if (it != topics_.end()) {
 			topics_.erase(it);
 		}
 		return unsubscribe(nullptr, topic.c_str()) == MOSQ_ERR_SUCCESS;
@@ -138,7 +138,7 @@ private:
 
 MQTTClient::MQTTClient(const std::string &host,
                        int port,
-                       int keepalive) : impl_(std::make_unique<MQTTClientImpl>(host, port, keepalive)) {
+                       int keepalive) : impl_(cm::make_unique<MQTTClientImpl>(host, port, keepalive)) {
 }
 
 MQTTClient::~MQTTClient() = default;
