@@ -20,23 +20,23 @@ public:
 
 	void set_auth_method(AUTH_METHOD) const;
 
-	[[nodiscard]] bool set_credentials(const std::string &, const std::string &) const;
+	bool set_credentials(const std::string &, const std::string &) const;
 
-	[[nodiscard]] bool set_cafile(const std::string &) const;
+	bool set_cafile(const std::string &) const;
 
-	[[nodiscard]] bool set_psk(const std::string &, const std::string &) const;
+	bool set_psk(const std::string &, const std::string &) const;
 
-	[[nodiscard]] bool connect() const;
+	bool connect() const;
 
-	[[nodiscard]] bool reconnect() const;
+	bool reconnect() const;
 
-	[[nodiscard]] bool publish_message(const std::string &, const std::string &) const;
+	bool publish_message(const std::string &, const std::string &) const;
 
-	[[nodiscard]] bool subscribe(const std::string &) const;
+	bool subscribe(const std::string &) const;
 
 	void resubscribe() const;
 
-	[[nodiscard]] bool unsubscribe(const std::string &) const;
+	bool unsubscribe(const std::string &) const;
 
 	void setMessageCallback(const cm::MessageCallback &) const;
 
