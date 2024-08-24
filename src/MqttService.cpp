@@ -1,4 +1,6 @@
 #include "MqttService.h"
+#include "service/ServiceTemp.hpp"
+#include "service/Login.h"
 
 MqttService &MqttService::getInstance() {
 	static MqttService service;
@@ -8,7 +10,8 @@ MqttService &MqttService::getInstance() {
 MqttService::MqttService() {
 	m_fn.insert({
 		EnMsgType::LOGIN_MSG, [&](const json &js)-> std::string {
-			return js.dump();
+			cm::service::CReQuest<cm::service::Login, cm::service::LoginResult> res = js;
+			return res.do_fail_success();
 		}
 	});
 }
